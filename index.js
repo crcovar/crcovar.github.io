@@ -16,11 +16,12 @@ function main() {
 	
 	// get product list
 	let items = [];
-	document.querySelectorAll('.product-list ul:not(#ulSearch) li').forEach(li => {
-		let name = li.innerText.substring(0, li.innerText.indexOf('USD $')).trim();
-		let price = li.innerText.substring(li.innerText.indexOf('USD $')).trim();
+	document.querySelectorAll('.product-list ul:not(#ulSearch) li').forEach((li, i) => {
+		let item = li.innerText.split('USD $');
+		let name = item[0].trim();
+		let price = parseFloat(item[1]);
 
-		items.push({ name, price, list_name });
+		items.push({ name, price, list_name, list_position: i+1 });
 	});
 	
 	if (items.length > 0) {
