@@ -17,6 +17,9 @@ function main() {
 	// get product list
 	let items = [];
 	document.querySelectorAll('.product-list ul:not(#ulSearch) li').forEach((li, i) => {
+		if (!li) {
+			break;
+		}
 		let item = li.innerText.split('USD $');
 		let name = item[0].trim();
 		let price = parseFloat(item[1]);
@@ -26,6 +29,12 @@ function main() {
 	
 	if (items.length > 0) {
 		gtag('event', 'view_item_list', { items });
+	}
+	
+	// product detail view
+	if (document.querySelector('.product_view')) {
+		const name = document.querySelector('.product_view .pro_detail h2').innerText.trim();
+		const price = parseFloat(document.querySelector('.product_view .pro_detail .price').innerText.replace('USD $', ''));
 	}
 }
 
