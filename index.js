@@ -11,18 +11,21 @@ function docReady(fn) {
 }
 
 function main() {
+	// product list name
+	let list_name = document.querySelector('.product-list h2:first-of-type').innerText.toLowerCase();
+	
 	// get product list
 	let items = [];
 	document.querySelectorAll('.product-list ul:not(#ulSearch) li').forEach(li => {
-		let name = li.innerText.substring(0, li.innerText.indexOf('$')).trim();
-		let price = li.innerText.substring(li.innerText.indexOf('$')).trim();
+		let name = li.innerText.substring(0, li.innerText.indexOf('USD $')).trim();
+		let price = li.innerText.substring(li.innerText.indexOf('USD $')).trim();
 
-		items.push({ name, price, list_name: 'Test' });
+		items.push({ name, price, list_name });
 	});
-
-	gtag('event', 'view_item_list', {
-		items,
-	});
+	
+	if (items.length > 0) {
+		gtag('event', 'view_item_list', { items });
+	}
 }
 
 docReady(main);
