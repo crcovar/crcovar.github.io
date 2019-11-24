@@ -42,7 +42,7 @@ function main() {
 			),
 		};
 
-		document.querySelector('.product_view .pro_content li').forEach(li => {
+		document.querySelectorAll('.product_view .pro_content li').forEach(li => {
 			if (li.children[0].innerText.toLowerCase() === 'publisher') {
 				item.brand = li.children[1].innerText.trim();
 			}
