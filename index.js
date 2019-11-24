@@ -1,4 +1,4 @@
-/* version: 0.2.0 */
+/* version: 0.2.1 */
 
 function docReady(fn) {
 	// see if DOM is already available
@@ -25,10 +25,10 @@ function main() {
 			});
 		}
 		// get product list
-		let items = [];
-		items = buildItemList([...document.querySelectorAll('.product-list #ulAllProduct li')]);
+		let items = buildItemList([...document.querySelectorAll('.product-list #ulAllProduct li')]);
 		if (items.length === 0) {
-			items = buildItemList([...document.querySelectorAll('.product-list ul:not(#ulSearch) li)]);
+			// not on a product list page so check for main page list
+			items = buildItemList([...document.querySelectorAll('.product-list ul:not(#ulSearch) li')]);
 		}
 
 		if (items.length > 0) {
