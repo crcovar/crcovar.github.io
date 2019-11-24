@@ -29,7 +29,7 @@ function tagProductListItems() {
 
 			let item = { name, price, list_name, list_position: index + 1 };
 
-			li.querySelectorAll('a.all_product').forEach(a => {
+			li.querySelectorAll('a').forEach(a => {
 				a.onclick = () => selectContentClickHandler(item);
 			});
 
