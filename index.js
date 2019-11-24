@@ -1,4 +1,4 @@
-/* version: 0.1.0 */
+/* version: 0.2.0 */
 
 function docReady(fn) {
 	// see if DOM is already available
@@ -15,20 +15,21 @@ function main() {
 		// product list name
 		let list_name = document.querySelector('.product-list h2:first-of-type').innerText.toLowerCase();
 
-		// get product list
-		let items = [];
-		document
-			.querySelectorAll('.product-list ul:not(#ulSearch) li,.product-list #ulAllProduct li')
-			.forEach((li, index) => {
-				if (!li) {
-					return;
-				}
+		function buildItemList(listItems) {
+			return listItems.map((li, index) => {
 				let item = li.innerText.split('USD $');
 				let name = item[0].trim();
 				let price = parseFloat(item[1]);
 
-				items.push({ name, price, list_name, list_position: index + 1 });
+				return { name, price, list_name, list_position: index + 1 };
 			});
+		}
+		// get product list
+		let items = [];
+		let items = buildItemList([...document.querySelectorAll('.product-list #ulAllProduct li')]);
+		if (items.length === 0) {
+			items = buildItemList([...document.querySelectorAll('.product-list ul:not(#ulSearch) li)]);
+		}
 
 		if (items.length > 0) {
 			gtag('event', 'view_item_list', { items });
@@ -44,7 +45,7 @@ function main() {
 			),
 		};
 
-		document.querySelectorAll('.product_view .pro_content li').forEach(li => {
+		[...document.querySelectorAll('.product_view .pro_content li')].forEach(li => {
 			if (li.children.length > 1 && li.children[0].innerText.toLowerCase() === 'publisher') {
 				item.brand = li.children[1].innerText.trim();
 			}
