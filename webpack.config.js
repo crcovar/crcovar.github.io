@@ -6,8 +6,8 @@ const mode = 'development';
 module.exports = {
 	entry: './src/index.js',
 	output: {
-		filename: `ieach.${mode === 'production' ? config.version : 'latest'}.min.js`,
-		path: path.resolve(__dirname, 'ieach'),
+		filename: `each.${mode === 'production' ? config.version : 'latest'}.min.js`,
+		path: path.resolve(__dirname, 'each'),
 	},
 	mode,
 };
