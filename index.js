@@ -17,18 +17,16 @@ function main() {
 
 		// get product list
 		let items = [];
-		document
-			.querySelectorAll('.product-list ul:not(#ulSearch) li,.product-list ul:not(#ulSeach) li')
-			.forEach((li, index) => {
-				if (!li) {
-					return;
-				}
-				let item = li.innerText.split('USD $');
-				let name = item[0].trim();
-				let price = parseFloat(item[1]);
+		document.querySelectorAll('.product-list ul:nth-child(2) li').forEach((li, index) => {
+			if (!li) {
+				return;
+			}
+			let item = li.innerText.split('USD $');
+			let name = item[0].trim();
+			let price = parseFloat(item[1]);
 
-				items.push({ name, price, list_name, list_position: index + 1 });
-			});
+			items.push({ name, price, list_name, list_position: index + 1 });
+		});
 
 		if (items.length > 0) {
 			gtag('event', 'view_item_list', { items });
