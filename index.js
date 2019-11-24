@@ -26,7 +26,7 @@ function main() {
 		}
 		// get product list
 		let items = [];
-		let items = buildItemList([...document.querySelectorAll('.product-list #ulAllProduct li')]);
+		items = buildItemList([...document.querySelectorAll('.product-list #ulAllProduct li')]);
 		if (items.length === 0) {
 			items = buildItemList([...document.querySelectorAll('.product-list ul:not(#ulSearch) li)]);
 		}
