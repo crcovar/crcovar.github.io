@@ -68,9 +68,12 @@ function tagProductDetail() {
 		gtag('event', 'add_to_cart', { items: [{ ...item, quantity }] });
 	}
 	// and click handler for add to cart
-	if (document.querySelector('.product_view .qty_sec .addcart')) {
-		let addToCartButton = document.querySelector('.product_view .qty_sec .addcart');
-		addToCartButton.addEventListener('click', () => addToCartClickHandler(item));
+	if (document.querySelector('.product_view .qty_sec .qty #TotalItem')) {
+		// finding a quantity input means we have stock
+		if (document.querySelector('.product_view .qty_sec .addcart')) {
+			let addToCartButton = document.querySelector('.product_view .qty_sec .addcart');
+			addToCartButton.addEventListener('click', () => addToCartClickHandler(item));
+		}
 	}
 
 	// send event for view_item
