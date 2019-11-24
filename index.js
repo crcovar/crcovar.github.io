@@ -1,4 +1,4 @@
-/* version: 0.3.3 */
+/* version: 0.4.0 */
 
 function docReady(fn) {
 	// see if DOM is already available
@@ -62,6 +62,18 @@ function tagProductDetail() {
 			item.category = li.children[1].innerText.trim();
 		}
 	});
+
+	function addToCartClickHandler(item) {
+		let quantity = parseInt(document.querySelector('.product_view .qty_sec .qty #TotalItem').value);
+		gtag('event', 'add_to_cart', { items: [{ ...item, quantity }] });
+	}
+	// and click handler for add to cart
+	if (document.querySelector('.product_view .qty_sec .addcart')) {
+		let addToCartButton = document.querySelector('.product_view .qty_sec .addcart');
+		addToCartButton.addEventListener('click', () => addToCartClickHandler(item));
+	}
+
+	// send event for view_item
 	gtag('event', 'view_item', { items: [item] });
 }
 
