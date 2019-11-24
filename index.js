@@ -13,28 +13,42 @@ function docReady(fn) {
 function main() {
 	// product list name
 	let list_name = document.querySelector('.product-list h2:first-of-type').innerText.toLowerCase();
-	
+
 	// get product list
 	let items = [];
-	document.querySelectorAll('.product-list ul:not(#ulSearch) li').forEach((li, i) => {
+	document.querySelectorAll('.product-list ul:not(#ulSearch) li').forEach((li, index) => {
 		if (!li) {
-			break;
+			return;
 		}
 		let item = li.innerText.split('USD $');
 		let name = item[0].trim();
 		let price = parseFloat(item[1]);
 
-		items.push({ name, price, list_name, list_position: i+1 });
+		items.push({ name, price, list_name, list_position: index + 1 });
 	});
-	
+
 	if (items.length > 0) {
 		gtag('event', 'view_item_list', { items });
 	}
-	
+
 	// product detail view
 	if (document.querySelector('.product_view')) {
-		const name = document.querySelector('.product_view .pro_detail h2').innerText.trim();
-		const price = parseFloat(document.querySelector('.product_view .pro_detail .price').innerText.replace('USD $', ''));
+		let item = {
+			name: document.querySelector('.product_view .pro_detail h2').innerText.trim(),
+			price: parseFloat(
+				document.querySelector('.product_view .pro_detail .price').innerText.replace('USD $', ''),
+			),
+		};
+
+		document.querySelector('.product_view .pro_content li').forEach(li => {
+			if (li.children[0].innerText.toLowerCase() === 'publisher') {
+				item.brand = li.children[1].innerText.trim();
+			}
+			if (li.children[0].innerText.toLowerCase() === 'category') {
+				item.category = li.children[1].innerText.trim();
+			}
+		});
+		gtag('event', 'view_item', { items: [item] });
 	}
 }
 
