@@ -1,4 +1,4 @@
-/* version: 0.2.1 */
+/* version: 0.3.3 */
 
 function docReady(fn) {
 	// see if DOM is already available
@@ -30,7 +30,7 @@ function tagProductListItems() {
 			let item = { name, price, list_name, list_position: index + 1 };
 
 			li.querySelectorAll('a').forEach(a => {
-				a.onclick = () => selectContentClickHandler(item);
+				a.addEventListener('click', () => selectContentClickHandler(item));
 			});
 
 			return item;
