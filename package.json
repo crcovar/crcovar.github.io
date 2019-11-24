@@ -1,0 +1,16 @@
+{
+	"name": "crcovar.github.io",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "git@github.com:crcovar/crcovar.github.io.git",
+	"author": "Charles Covar <covar1@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"build": "webpack"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"webpack": "^4.41.2",
+		"webpack-cli": "^3.3.10"
+	}
+}
