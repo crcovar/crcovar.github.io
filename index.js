@@ -43,10 +43,10 @@ function main() {
 		};
 
 		document.querySelectorAll('.product_view .pro_content li').forEach(li => {
-			if (li.children.length > 0 && li.children[0].innerText.toLowerCase() === 'publisher') {
+			if (li.children.length > 1 && li.children[0].innerText.toLowerCase() === 'publisher') {
 				item.brand = li.children[1].innerText.trim();
 			}
-			if (li.children.length > 0 && li.children[0].innerText.toLowerCase() === 'category') {
+			if (li.children.length > 1 && li.children[0].innerText.toLowerCase() === 'category') {
 				item.category = li.children[1].innerText.trim();
 			}
 		});
