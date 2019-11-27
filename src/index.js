@@ -1,6 +1,6 @@
-/* version: 0.5.0*/
 import { tagProductListItems } from './product-lists.js';
 import { tagProductDetail } from './product-detail.js';
+import { tagCart } from './cart.js';
 
 function docReady(fn) {
 	// see if DOM is already available
@@ -21,6 +21,11 @@ function main() {
 	// product detail view
 	if (document.querySelector('.product_view')) {
 		tagProductDetail();
+	}
+
+	// shopping cart
+	if (document.querySelector('.shopping-cart')) {
+		tagCart();
 	}
 }
 

@@ -1,4 +1,7 @@
 function selectContentClickHandler(item) {
+	// store item for detail view
+	sessionStorage.setItem('item-clicked', JSON.stringify(item));
+	// fire event
 	gtag('event', 'select_content', {
 		content_type: 'product',
 		items: [item],
@@ -31,7 +34,6 @@ export function tagProductListItems() {
 		// not on a product list page so check for main page list
 		items = buildItemList(list_name, [...document.querySelectorAll('.product-list ul:not(#ulSearch) li')]);
 	}
-
 	if (items.length > 0) {
 		gtag('event', 'view_item_list', { items });
 	}
