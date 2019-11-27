@@ -4,6 +4,12 @@ export function tagProductDetail() {
 		price: parseFloat(document.querySelector('.product_view .pro_detail .price').innerText.replace('USD $', '')),
 	};
 
+	// get item from storage, add extra info if they match
+	let itemClicked = sessionStorage.getItem('item-clicked') ? JSON.parse(sessionStorage.getItem('item-clicked')) : {};
+	if (itemClicked.name && itemClicked.name === item.name);
+	item = Object.assign({}, itemClicked, item);
+
+	// add brand (publisher) and category details
 	[...document.querySelectorAll('.product_view .pro_content li')].forEach(li => {
 		if (li.children.length > 1 && li.children[0].innerText.toLowerCase() === 'publisher') {
 			item.brand = li.children[1].innerText.trim();
@@ -14,8 +20,15 @@ export function tagProductDetail() {
 	});
 
 	function addToCartClickHandler(item) {
-		let quantity = parseInt(document.querySelector('.product_view .qty_sec .qty #TotalItem').value);
-		gtag('event', 'add_to_cart', { items: [{ ...item, quantity }] });
+		item.quantity = parseInt(document.querySelector('.product_view .qty_sec .qty #TotalItem').value);
+
+		// save to storage
+		let cartStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
+		cartStorage.push(item);
+		sessionStorage.setItem('cart', JSON.stringify(cartStorage));
+
+		// tag event
+		gtag('event', 'add_to_cart', { items: [item] });
 	}
 	// and click handler for add to cart
 	if (document.querySelector('.product_view .qty_sec .qty #TotalItem')) {
