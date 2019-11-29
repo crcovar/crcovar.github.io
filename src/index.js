@@ -2,6 +2,11 @@ import { tagProductListItems } from './product-lists.js';
 import { tagProductDetail } from './product-detail.js';
 import { tagCart } from './cart.js';
 
+let gtm = document.createElement('noscript');
+gtm.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LQHD3H"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
+document.body.insertBefore(gtm, document.body.firstChild);
+
 function docReady(fn) {
 	// see if DOM is already available
 	if (document.readyState === 'complete' || document.readyState === 'interactive') {
