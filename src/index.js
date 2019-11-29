@@ -5,7 +5,6 @@ import { tagCart } from './cart.js';
 let gtm = document.createElement('noscript');
 gtm.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LQHD3H"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
-document.body.insertBefore(gtm, document.body.firstChild);
 
 function docReady(fn) {
 	// see if DOM is already available
@@ -18,6 +17,7 @@ function docReady(fn) {
 }
 
 function main() {
+	document.body.insertBefore(gtm, document.body.firstChild);
 	// product list view
 	if (document.querySelector('.product-list')) {
 		tagProductListItems();
