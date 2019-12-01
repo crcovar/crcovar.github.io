@@ -2,9 +2,9 @@ import { tagProductListItems } from './product-lists.js';
 import { tagProductDetail } from './product-detail.js';
 import { tagCart } from './cart.js';
 
-let gtm = document.createElement('noscript');
-gtm.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LQHD3H"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
+// let gtm = document.createElement('noscript');
+// gtm.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LQHD3H"
+// height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
 
 function docReady(fn) {
 	// see if DOM is already available
