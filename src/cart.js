@@ -1,3 +1,5 @@
+function removeFromCartClickHandler(item) {}
+
 export function tagCart() {
 	let cartStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
 	let cartRows = [...document.querySelectorAll('.shopping-cart #dvCart tr')];
