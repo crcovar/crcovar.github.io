@@ -17,7 +17,7 @@ function docReady(fn) {
 }
 
 function main() {
-	document.body.insertBefore(gtm, document.body.firstChild);
+	// document.body.insertBefore(gtm, document.body.firstChild);
 	// product list view
 	if (document.querySelector('.product-list')) {
 		tagProductListItems();
