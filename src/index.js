@@ -1,6 +1,7 @@
 import { tagProductListItems } from './product-lists.js';
 import { tagProductDetail } from './product-detail.js';
 import { tagCart } from './cart.js';
+import { tagTransaction } from './transaction.js';
 
 // let gtm = document.createElement('noscript');
 // gtm.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LQHD3H"
@@ -31,6 +32,11 @@ function main() {
 	// shopping cart
 	if (document.querySelector('.shopping-cart')) {
 		tagCart();
+	}
+
+	// comleted transaction
+	if (window.location.pathname === '/Transaction') {
+		tagTransaction();
 	}
 }
 
