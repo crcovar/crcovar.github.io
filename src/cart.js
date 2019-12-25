@@ -1,3 +1,21 @@
+/*
+Copyright (c) 2019 Fight or Flight Comics, LLC.
+
+This file is part of Each.
+
+Each is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Each is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Each.  If not, see <https://www.gnu.org/licenses/>.
+*/
 function removeFromCartClickHandler(item) {
 	let cartStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
 	cartStorage = cartStorage.filter(i => i.name !== item.name);
@@ -89,11 +107,6 @@ export function tagCart() {
 	});
 }
 
-document.querySelector('.checkout_box');
-
 document.getElementsByName('freightgrp').forEach(input => {
 	input.addEventListener('change', () => freightChangeHandler());
 });
-
-// shipping
-parseFloat(document.getElementById('spnCourieiChrges').innerText);

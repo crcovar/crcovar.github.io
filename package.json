@@ -1,6 +1,6 @@
 {
 	"name": "crcovar.github.io",
-	"version": "1.3.0",
+	"version": "1.0.0",
 	"main": "index.js",
 	"repository": "git@github.com:crcovar/crcovar.github.io.git",
 	"author": "Charles Covar <covar1@gmail.com>",
