@@ -11,7 +11,7 @@ export function tagTransaction() {
 	let purchase = {
 		transaction_id: getTransactionId(),
 		items,
-		value: items.reduce((value, item) => (item.price ? value + item.price : value), 0),
+		value: items.reduce((value, item) => (item.price ? value + item.price * item.quantity : value), 0),
 	};
 
 	gtag('event', 'purchase', purchase);
