@@ -4,6 +4,23 @@ function removeFromCartClickHandler(item) {
 	sessionStorage.setItem('cart', JSON.stringify(cartStorage));
 }
 
+function startCheckoutClickHandler(items) {
+	if (!sessionStorage.getItem('shipping')) {
+		return;
+	}
+	const shipping = sessionStorage.getItem('shipping');
+	const tax = sessionStorage.getItem('tax');
+	// tag it
+	if (items.length > 0) {
+		gtag('event', 'begin_checkout', {
+			items,
+			shipping,
+			tax,
+			value: items.reduce((v, i) => (i.price ? v + i.price * i.quantity : v), 0.0),
+		});
+	}
+}
+
 function changeQuantityHandler(name) {
 	let cartStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
 
@@ -15,6 +32,20 @@ function changeQuantityHandler(name) {
 	});
 
 	sessionStorage.setItem('cart', JSON.stringify(cartStorage));
+}
+
+function freightChangeHandler() {
+	let shipping = 0.0;
+	let shippingEl = document.getElementById('spnShipRate');
+	if (shippingEl) {
+		shipping = parseFloat(shippingEl.innerText.replace('USD $'));
+	}
+	sessionStorage.setItem('shipping', shipping);
+}
+
+function saveTax() {
+	let tax = parseFloat(document.getElementById('spnSaleTax').innerText);
+	sessionStorage.setItem('tax', tax);
 }
 
 export function tagCart() {
@@ -52,8 +83,17 @@ export function tagCart() {
 
 	sessionStorage.setItem('cart', JSON.stringify(items));
 
-	// tag it
-	if (items.length > 0) {
-		gtag('event', 'begin_checkout', { items, checkout_option: 'viewed cart' });
-	}
+	document.getElementById('btnProceed').addEventListener('click', () => {
+		saveTax();
+		startCheckoutClickHandler(items);
+	});
 }
+
+document.querySelector('.checkout_box');
+
+document.getElementsByName('freightgrp').forEach(input => {
+	input.addEventListener('change', () => freightChangeHandler());
+});
+
+// shipping
+parseFloat(document.getElementById('spnCourieiChrges').innerText);
