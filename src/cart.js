@@ -50,7 +50,7 @@ export function tagCart() {
 		return item;
 	});
 
-	cartStorage.setItem('cart', JSON.stringify(items));
+	sessionStorage.setItem('cart', JSON.stringify(items));
 
 	// tag it
 	if (items.length > 0) {
