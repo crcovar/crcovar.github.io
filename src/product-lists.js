@@ -16,6 +16,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Each.  If not, see <https://www.gnu.org/licenses/>.
 */
+import { currencyString } from './config';
+
 function selectContentClickHandler(item) {
 	// store item for detail view
 	sessionStorage.setItem('item-clicked', JSON.stringify(item));
@@ -28,7 +30,7 @@ function selectContentClickHandler(item) {
 
 function buildItemList(list_name, listItems) {
 	return listItems.map((li, index) => {
-		let nameAndPrice = li.innerText.split('USD $');
+		let nameAndPrice = li.innerText.split(currencyString);
 		let name = nameAndPrice[0].trim();
 		let price = parseFloat(nameAndPrice[1]);
 

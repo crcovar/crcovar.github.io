@@ -16,10 +16,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Each.  If not, see <https://www.gnu.org/licenses/>.
 */
+import { currencyString } from './config';
+
 export function tagProductDetail() {
 	let item = {
 		name: document.querySelector('.product_view .pro_detail h2').innerText.trim(),
-		price: parseFloat(document.querySelector('.product_view .pro_detail .price').innerText.replace('USD $', '')),
+		price: parseFloat(
+			document.querySelector('.product_view .pro_detail .price').innerText.replace(currencyString, ''),
+		),
 	};
 
 	// get item from storage, add extra info if they match

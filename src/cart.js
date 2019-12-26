@@ -16,6 +16,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Each.  If not, see <https://www.gnu.org/licenses/>.
 */
+import { currencyString } from './config';
+
 function removeFromCartClickHandler(item) {
 	let cartStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
 	cartStorage = cartStorage.filter(i => i.name !== item.name);
@@ -56,7 +58,7 @@ function freightChangeHandler() {
 	let shipping = 0.0;
 	let shippingEl = document.getElementById('spnShipRate');
 	if (shippingEl) {
-		shipping = parseFloat(shippingEl.innerText.replace('USD $'));
+		shipping = parseFloat(shippingEl.innerText.replace(currencyString));
 	}
 	sessionStorage.setItem('shipping', shipping);
 }
@@ -83,7 +85,7 @@ export function tagCart() {
 
 		let item = {
 			name,
-			price: parseFloat(columns[2].innerText.replace('USD $', '')),
+			price: parseFloat(columns[2].innerText.replace(currencyString, '')),
 			quantity: parseInt(quantityEl.value),
 		};
 
