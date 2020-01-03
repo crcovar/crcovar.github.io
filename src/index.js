@@ -35,7 +35,7 @@ function docReady(fn) {
 
 function main() {
 	// Check for cookie, if not found flush local storage and create it
-	if (!document.cookie.split(';').filter(item => item.trim().startsWith('each=')).length) {
+	if (!document.cookie.includes('each=true')) {
 		localStorage.clear();
 		document.cookie = 'each=true';
 	}
