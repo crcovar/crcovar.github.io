@@ -19,17 +19,17 @@ along with Each.  If not, see <https://www.gnu.org/licenses/>.
 import { currencyString } from './config';
 
 function removeFromCartClickHandler(item) {
-	let cartStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
+	let cartStorage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 	cartStorage = cartStorage.filter(i => i.name !== item.name);
-	sessionStorage.setItem('cart', JSON.stringify(cartStorage));
+	localStorage.setItem('cart', JSON.stringify(cartStorage));
 }
 
 function startCheckoutClickHandler(items) {
-	if (!sessionStorage.getItem('shipping')) {
+	if (!localStorage.getItem('shipping')) {
 		return;
 	}
-	const shipping = sessionStorage.getItem('shipping');
-	const tax = sessionStorage.getItem('tax');
+	const shipping = localStorage.getItem('shipping');
+	const tax = localStorage.getItem('tax');
 	// tag it
 	if (items.length > 0) {
 		gtag('event', 'begin_checkout', {
@@ -42,7 +42,7 @@ function startCheckoutClickHandler(items) {
 }
 
 function changeQuantityHandler(name) {
-	let cartStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
+	let cartStorage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 
 	cartStorage.forEach(item => {
 		if (item.name !== name) {
@@ -51,7 +51,7 @@ function changeQuantityHandler(name) {
 		item.quantity = parseInt(this.value);
 	});
 
-	sessionStorage.setItem('cart', JSON.stringify(cartStorage));
+	localStorage.setItem('cart', JSON.stringify(cartStorage));
 }
 
 function freightChangeHandler() {
@@ -60,16 +60,16 @@ function freightChangeHandler() {
 	if (shippingEl) {
 		shipping = parseFloat(shippingEl.innerText.replace(currencyString));
 	}
-	sessionStorage.setItem('shipping', shipping);
+	localStorage.setItem('shipping', shipping);
 }
 
 function saveTax() {
 	let tax = parseFloat(document.getElementById('spnSaleTax').innerText);
-	sessionStorage.setItem('tax', tax);
+	localStorage.setItem('tax', tax);
 }
 
 export function tagCart() {
-	let cartStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
+	let cartStorage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 
 	let cartRows = [...document.querySelectorAll('.shopping-cart #dvCart tr')];
 	let items = cartRows.map(row => {
@@ -101,7 +101,7 @@ export function tagCart() {
 		return item;
 	});
 
-	sessionStorage.setItem('cart', JSON.stringify(items));
+	localStorage.setItem('cart', JSON.stringify(items));
 
 	document.getElementById('btnProceed').addEventListener('click', () => {
 		saveTax();

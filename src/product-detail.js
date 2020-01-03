@@ -27,7 +27,7 @@ export function tagProductDetail() {
 	};
 
 	// get item from storage, add extra info if they match
-	let itemClicked = sessionStorage.getItem('item-clicked') ? JSON.parse(sessionStorage.getItem('item-clicked')) : {};
+	let itemClicked = localStorage.getItem('item-clicked') ? JSON.parse(localStorage.getItem('item-clicked')) : {};
 	if (itemClicked.name && itemClicked.name === item.name);
 	item = Object.assign({}, itemClicked, item);
 
@@ -45,9 +45,9 @@ export function tagProductDetail() {
 		item.quantity = parseInt(document.querySelector('.product_view .qty_sec .qty #TotalItem').value);
 
 		// save to storage
-		let cartStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
+		let cartStorage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 		cartStorage.push(item);
-		sessionStorage.setItem('cart', JSON.stringify(cartStorage));
+		localStorage.setItem('cart', JSON.stringify(cartStorage));
 
 		// tag event
 		gtag('event', 'add_to_cart', { items: [item] });

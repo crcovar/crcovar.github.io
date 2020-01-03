@@ -20,7 +20,7 @@ import { currencyString } from './config';
 
 function selectContentClickHandler(item) {
 	// store item for detail view
-	sessionStorage.setItem('item-clicked', JSON.stringify(item));
+	localStorage.setItem('item-clicked', JSON.stringify(item));
 	// fire event
 	gtag('event', 'select_content', {
 		content_type: 'product',

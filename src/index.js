@@ -34,9 +34,15 @@ function docReady(fn) {
 }
 
 function main() {
-	// document.body.insertBefore(gtm, document.body.firstChild);
-	// product list view
+	// Check for cookie, if not found flush local storage and create it
+	if (!document.cookie.split(';').filter(item => item.trim().startsWith('each=')).length) {
+		localStorage.clear();
+		document.cookie = 'each=true';
+	}
+
 	if (document.querySelector('.product-list')) {
+		// document.body.insertBefore(gtm, document.body.firstChild);
+		// product list view
 		tagProductListItems();
 	}
 

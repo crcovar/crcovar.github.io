@@ -1,8 +1,8 @@
 const path = require('path');
 const config = require('./package.json');
 
-const currency = 'CAD';
-const mode = 'production';
+const currency = 'USD';
+const mode = 'development';
 
 module.exports = {
 	entry: './src/index.js',

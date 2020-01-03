@@ -24,9 +24,9 @@ function getTransactionId() {
 	return `error${Date.now()}`;
 }
 export function tagTransaction() {
-	const items = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : [];
-	const shipping = sessionStorage.getItem('shipping') ? sessionStorage.getItem('shipping') : 0.0;
-	const tax = sessionStorage.getItem('tax');
+	const items = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+	const shipping = localStorage.getItem('shipping') ? localStorage.getItem('shipping') : 0.0;
+	const tax = localStorage.getItem('tax');
 
 	let purchase = {
 		transaction_id: getTransactionId(),
