@@ -1,7 +1,7 @@
 const path = require('path');
 const config = require('./package.json');
 
-const currency = 'NZD';
+const currency = 'USD';
 const mode = 'production';
 
 module.exports = {
