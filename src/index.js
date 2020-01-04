@@ -35,7 +35,9 @@ function docReady(fn) {
 
 function main() {
 	// Check for cookie, if not found flush local storage and create it
+	console.log('CRC', document.cookie);
 	if (!document.cookie.includes('each=true')) {
+		console.log('CRC', 'did not find cookie');
 		localStorage.clear();
 		document.cookie = 'each=true';
 	}
