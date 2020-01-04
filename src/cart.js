@@ -92,7 +92,7 @@ export function tagCart() {
 		if (cartStorage.some(c => c.name === item.name)) {
 			// item is in cartStorage
 			let itemFromStorage = cartStorage.filter(c => c.name === item.name)[0];
-			item = Object.assign({}, itemFromStorage, item);
+			item = Object.assign({}, item, itemFromStorage);
 		}
 
 		const removeFromCartBtn = row.querySelector('.delete_item');
