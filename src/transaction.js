@@ -36,5 +36,10 @@ export function tagTransaction() {
 		value: items.reduce((value, item) => (item.price ? value + item.price * item.quantity : value), 0),
 	};
 
+	const cookies = document.cookie.split(';');
+	if (cookies.includes('affiliate_id')) {
+		purchase.affiliation = cookies.filter(c => c.startsWith('affiliate_id'))[0].split('=')[1];
+	}
+
 	gtag('event', 'purchase', purchase);
 }
