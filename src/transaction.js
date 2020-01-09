@@ -38,7 +38,7 @@ export function tagTransaction() {
 
 	const cookies = document.cookie.split(';');
 	if (cookies.includes('affiliate_id')) {
-		purchase.affiliation = cookies.filter(c => c.startsWith('affiliate_id'))[0].split('=')[1];
+		purchase.affiliation = cookies.filter(c => c.trim().startsWith('affiliate_id'))[0].split('=')[1];
 	}
 
 	gtag('event', 'purchase', purchase);
