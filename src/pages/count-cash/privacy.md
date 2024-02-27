@@ -2,6 +2,7 @@
 layout: '../../layouts/CountCash.astro'
 title: 'Privacy Policy'
 ---
+
 <article class="prose">
 
 # Privacy Policy
