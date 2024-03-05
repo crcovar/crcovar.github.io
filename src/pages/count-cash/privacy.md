@@ -2,7 +2,7 @@
 layout: '../../layouts/CountCash.astro'
 title: 'Privacy Policy'
 ---
-<article class="prose max-w-2/3 w-2/3">
+<article class="prose">
 
 # Privacy Policy
 

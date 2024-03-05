@@ -1,0 +1,14 @@
+---
+import CountCash from "@layouts/CountCash.astro";
+import { App } from "@components/count-cash/App.tsx";
+---
+
+<CountCash title="Count Cash">
+  <App client:load />
+  <div class="mt-20">
+    Like using Count Cash? Feel free to <a
+      href="https://buy.stripe.com/bIY8ywajVdaX0UgaEE"
+      class="text-blue-500">leave a tip</a
+    > to show your support. 🙏
+  </div>
+</CountCash>
