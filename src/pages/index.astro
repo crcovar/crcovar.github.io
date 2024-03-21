@@ -1,27 +1,37 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
 ---
 
 <Layout title="Charles Covar">
-    <div class="hero bg-base-200">
-      <div class="hero-content flex-col lg:flex-row-reverse m-4">
-        <img src="profile.jpg" alt="Charles Covar" class="max-w-sm rounded-lg shadow-2xl" />
-        <div>
-          <h1 class="text-5xl font-bold">Hi I'm Charles Covar</h1>
-          <p class="py-6">
-            I write software for fun and work. I'm a full stack developer with a passion for front end development. I'm currently working on a few projects and learning new technologies.
-          </p>
-        </div>
+  <div class="hero bg-base-200">
+    <div class="hero-content flex-col lg:flex-row-reverse m-4">
+      <img
+        src="profile.jpg"
+        alt="Charles Covar"
+        class="max-w-sm rounded-lg shadow-2xl"
+      />
+      <div>
+        <h1 class="text-5xl font-bold">Hi I'm Charles Covar</h1>
+        <p class="py-6">
+          I write software for fun and work. I'm a full stack developer with a
+          passion for front end development. I'm currently working on a few
+          projects and learning new technologies.
+        </p>
       </div>
     </div>
+  </div>
 
-    <div class="m-3">
-      <h2 class="text-3xl font-semibold m-4">Projects</h2>
-      <Card title="Count Cash" body="A simple cash register app that helps you count your cash." href="/count-cash">
-        <img src="/count-cash/mac.png" alt="Count Cash" class="w-32 h-32" />
-      </Card>
-    </div>
+  <div class="m-3">
+    <h2 class="text-3xl font-semibold m-4">Projects</h2>
+    <Card
+      title="Count Cash"
+      body="A simple cash register app that helps you count your cash."
+      href="/count-cash"
+    >
+      <img src="/count-cash/mac.png" alt="Count Cash" class="w-32 h-32" />
+    </Card>
+  </div>
 </Layout>
 
 <style>

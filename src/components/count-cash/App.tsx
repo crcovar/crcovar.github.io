@@ -109,13 +109,13 @@ export function App() {
 
   return (
     <div className="flex flex-col md:items-center">
-      <div className="flex justify-between mb-6 md:w-2/3 lg:w-1/2">
+      <div className="mb-6 flex justify-between md:w-2/3 lg:w-1/2">
         <h1 className="text-2xl font-semibold">
-          Count Cash <small className="text-xs text-gray-400">v1.0.0</small>
+          Count Cash <small className="text-xs text-gray-400">v1.0.1</small>
         </h1>
         <Settings units={units} onToggle={showOrHide} />
       </div>
-      <h2 className="text-center text-green-500 text-4xl font-semibold">
+      <h2 className="p-4 text-center text-4xl font-semibold text-green-500">
         ${total.toFixed(2)}
       </h2>
       <div className="flex flex-col md:w-2/3 lg:w-1/2">{rows}</div>

@@ -11,6 +11,7 @@ export default function UnitRow({ name, quantity, onChange }) {
   return (
     <Input
       type="number"
+      inputMode="numeric"
       className="m-1"
       placeholder={name}
       aria-label={name}
